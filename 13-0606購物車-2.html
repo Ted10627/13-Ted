@@ -76,7 +76,7 @@
     </div>
   </nav>
   <!-- 內容 -->
-  <div class="container bg-gray-400 d-flex justify-content-center">
+  <div class="container-fluid bg-gray-400 d-flex justify-content-center">
     <div class="container bg-gray-100 my-5 shadow-lg">
       <h1 class="p-5">購物車</h1>
       <!-- 進度條 -->
@@ -223,13 +223,13 @@
       <div class="container border-bottom my-2 px-5 py-4 d-flex justify-content-end border-button">
         <div class="row w-50 justify-content-between align-items-center">
           <div class="col-8 d-flex schedule-jus-total align-items-center schedule-min-total">數量:</div>
-          <div class="col-4 d-flex justify-content-end align-items-center">3</div>
+          <div class="col-4 d-flex justify-content-end align-items-center" id="total-quantity">3</div>
           <div class="col-8 d-flex schedule-jus-total align-items-center schedule-min-total">小計:</div>
-          <div class="col-4 d-flex justify-content-end align-items-center ">$31.50</div>
+          <div class="col-4 d-flex justify-content-end align-items-center" id="subtotal">$31.50</div>
           <div class="col-8 d-flex schedule-jus-total align-items-center schedule-min-total">運費:</div>
-          <div class="col-4 d-flex justify-content-end align-items-center">$24.90</div>
+          <div class="col-4 d-flex justify-content-end align-items-center" id="shipping">$5.90</div>
           <div class="col-8 d-flex schedule-jus-total align-items-center schedule-min-total">總計:</div>
-          <div class="col-4 d-flex justify-content-end align-items-center">$56.40</div>
+          <div class="col-4 d-flex justify-content-end align-items-center" id="total">$56.40</div>
         </div>
       </div>
       <!-- 購物車下一步foot -->
@@ -349,6 +349,7 @@
       </div>
     </div>
   </div>
+  <script src="./js/13-0701購物車.js"></script>
 </body>
 
 </html>
