@@ -1,19 +1,23 @@
 const cart = document.querySelector('#cart');
-const cost = 5.00;//運費固定
+const cost = 5.00; // 運費固定
+
 function clearCart() {
     cart.innerHTML = '';
     let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     let totalQuantity = 0;
     let subtotal = 0;
+
     if (cartItems.length === 0) {
         cart.innerHTML = '<p>購物車是空的，歡迎回首頁選購</p>';
         update(0, 0);
         return;
     }
+
     cartItems.forEach((item, index) => {
         totalQuantity += item.quantity;
         subtotal += parseFloat(item.price.replace('$', '')) * item.quantity;
-        //印出清單
+
+        // 印出清單
         const row = document.createElement('div');
         row.classList.add('container', 'border-bottom', 'my-2', 'px-5', 'py-4', 'd-flex', 'justify-content-between', 'border-button');
         row.innerHTML = `
@@ -37,6 +41,7 @@ function clearCart() {
           `;
         cart.appendChild(row);
     });
+
     update(totalQuantity, subtotal);
     setup();
 }
@@ -52,7 +57,7 @@ function setup() {
             if (cartItems[index].quantity > 1) {
                 cartItems[index].quantity--;
             } else {
-                //移除商品
+                // 移除商品
                 cartItems.splice(index, 1);
             }
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -62,7 +67,7 @@ function setup() {
 
     plus.forEach(button => {
         button.addEventListener('click', function () {
-            const index = `this.id.replace('plus-','')`;
+            const index = this.id.replace('plus-', '');
             let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
             cartItems[index].quantity++;
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -70,12 +75,14 @@ function setup() {
         });
     });
 }
+
 function update(totalQuantity, subtotal) {
     const shipping = cost;
     const total = subtotal + shipping;
     document.querySelector('#total-quantity').innerHTML = totalQuantity;
     document.querySelector('#subtotal').innerHTML = `$${subtotal.toFixed(2)}`;
-    document.querySelector('#shipping').innerHTML = ` $${shipping.toFixed(2)}`;
+    document.querySelector('#shipping').innerHTML = `$${shipping.toFixed(2)}`;
     document.querySelector('#total').innerHTML = `$${total.toFixed(2)}`;
 }
+
 document.addEventListener('DOMContentLoaded', clearCart);
